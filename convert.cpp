@@ -12,32 +12,20 @@ Converter::Converter()
 
 Converter::~Converter(){}
 
-stringLinkedList* Converter::ConvertArrToLinkedList(string array[], int size, bool first)
+// EDITED 
+stringLinkedList* Converter::ConvertArrToLinkedList(string array[], int size)
 {
-	stringLinkedList *head = new stringLinkedList;
-	stringLinkedList *root = new stringLinkedList;
-	head->title = array[0];
-	root = head;
-	cout<<"hi"<<endl;
-	for(int i=1; i<size; i++)
-	{
-	    head->next = new stringLinkedList;
-		head->next->title = array[i];
-		head = head->next;
-	}
-	if(!first){
-        cout<<"This is your array"<<endl;
-        for(int i=0; i<size; i++)
-        {
-            cout<<array[i]<<endl;
-        }
-        cout<<"This is your Linked List"<<endl;
-        head = root;
-        while(root->next != NULL)
-        {
-            cout<<root->title<<endl;
-            root = root->next;
-        }
+	stringLinkedList* head = NULL;
+	stringLinkedList* previous = NULL;
+	for(int i = 0; i < size; i++){
+		stringLinkedList* new_element = new stringLinkedList;
+		if(head == NULL) {
+			head = new_element;
+		}
+		new_element->title = array[i];
+		if(previous != NULL){
+			previous->next = new_element;
+		}
 	}
 	return head;
 }
